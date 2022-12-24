@@ -10,5 +10,12 @@ npm-debug.*
 *.orig.*
 web-build/
 
+
+node_modules
+# build
+.vscode
+yarn.lock
+package.lock
+
 # macOS
 .DS_Store

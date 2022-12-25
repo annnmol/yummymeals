@@ -1,20 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import "react-native-gesture-handler";
+import AuthNavigator from "./app/navigations/AuthNavigator";
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { useCallback, useLayoutEffect } from "react";
+import { Text, View } from "react-native";
+
+// SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    'Poppins-Light': require('./app/assets/fonts/Poppins-Light.ttf'),
+    'Poppins-Regular': require('./app/assets/fonts/Poppins-Regular.ttf'),
+    'Poppins-Medium': require('./app/assets/fonts/Poppins-Medium.ttf'),
+    'Poppins-SemiBold': require('./app/assets/fonts/Poppins-SemiBold.ttf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    
+    if (fontsLoaded) {
+      // console.log("fonts loaded")
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  useLayoutEffect(() => {
+    // onLayoutRootView()
+  }, [])
+
+  if (!fontsLoaded) {
+    // console.log("fonts not found")
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+   
+    <NavigationContainer >
+  
+      {/* <StatusBar barStyle={'light-content'} backgroundColor='green' translucent={false} /> */}
+
+      <AuthNavigator/>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

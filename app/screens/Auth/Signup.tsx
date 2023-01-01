@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { AppSafeViewScreen } from '../../components'
+
 
 const Signup = () => {
   return (
-    <View>
+    <AppSafeViewScreen>
       <Text>Signup</Text>
-    </View>
+    </AppSafeViewScreen>
   )
 }
 

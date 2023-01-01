@@ -1,13 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { AppForm, AppFormField, AppSubmitButton } from "../../components/forms";
-import AppText from "../../components/AppText";
-
-import { Theme } from "../../customization/Theme";
-import { ROUTES_NAMES } from "../../utils/defaults";
+import { Image, KeyboardAvoidingView, StyleSheet, View } from "react-native";
+import { AppSafeViewScreen } from "../../components";
+import {
+  AppForm,
+  AppFormField,
+  AppFormPasswordField,
+  AppFormSelectField, AppSubmitButton
+} from "../../components/forms";
 import { loginSchema } from "../../utils/Validation";
-import AppButton from "../../components/AppButton";
+
 
 const Login = () => {
   const navigation = useNavigation<any>();
@@ -29,56 +31,84 @@ const Login = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <AppText>Normal</AppText>
-      <AppText variant="label">Label</AppText>
-      <AppText variant="label" >Label</AppText>
-      <AppText variant="label" >Label</AppText>
-      <AppButton onPress={()=>console.log("opacity")}>opacity</AppButton>
-      <AppButton variant="TouchableHighlight" onPress={()=>console.log("highlight")}>highlight</AppButton>
-      <AppForm
-        initialValues={userInput}
-        onSubmit={(values: any, submitProps: any) => {
-          handleSubmitBtn(values, submitProps);
-        }}
-        validationSchema={loginSchema}
-      >
-        <AppFormField
-          label="Email"
-          name="email"
-          placeholder="example@domain.com"
-          keyboardType="email-address"
+    <AppSafeViewScreen style={styles.container}>
+      {/* <TopItemListings/> */}
+      {/* <AccountScreen/> */}
+      {/* <MessageList/> */}
+      {/* <SimpleCardDetails
+        title="Food Burger"
+        price="$6.90"
+        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, alias. Delectus, dicta veniam quae architecto expedita, repellendus cum, dignissimos recusandae doloremque aliquam odio voluptatum distinctio? Obcaecati ipsa officia quibusdam magni."
+        image={require("../../assets/images/juice.jpeg")}
+      /> */}
+
+      {/* <SimpleCard
+          title="Food Buger"
+          price="$6.90"
+          description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, alias. Delectus, dicta veniam quae architecto expedita, repellendus cum, dignissimos recusandae doloremque aliquam odio voluptatum distinctio? Obcaecati ipsa officia quibusdam magni.'
+          image={require('../../assets/images/egg.jpeg')}
         />
-       
-        <AppFormField
-          label="Password"
-          name="password"
-          placeholder="1234566"
-          keyboardType="default"
+        <SimpleCard
+          title="Food Buger"
+          price="$6.90"
+          description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, alias. Delectus, dicta veniam quae architecto expedita, repellendus cum, dignissimos recusandae doloremque aliquam odio voluptatum distinctio? Obcaecati ipsa officia quibusdam magni.'
+          image={require('../../assets/images/egg.jpeg')}
+        /> */}
+      <View style={styles.logoContainer}>
+        <Image
+          style={[styles.logoImage]}
+          source={require("../../assets/images/logo.png")}
         />
-        <AppSubmitButton title={"Register"} />
-      </AppForm>
-      <TouchableOpacity
-        onPress={() => navigation.navigate(ROUTES_NAMES.SIGNUP)}
-      >
-        <Text>Signup</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate(ROUTES_NAMES.FORGET_PASSORD, {userId:12})}
-      >
-        <Text>Forget Password</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate(ROUTES_NAMES.TABS_NAVIGATOR)}
-      >
-        <Text>Home</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => navigation.navigate(ROUTES_NAMES.DRAWER_NAVIGATOR)}
-      >
-        <Text>Drawer</Text>
-      </TouchableOpacity>
-    </View>
+      </View>
+      <KeyboardAvoidingView style={styles.formContainer}>
+        <AppForm
+          initialValues={userInput}
+          onSubmit={(values: any, submitProps: any) => {
+            handleSubmitBtn(values, submitProps);
+          }}
+          validationSchema={loginSchema}
+        >
+          <AppFormField
+            label="Email"
+            name="email"
+            placeholder="example@domain.com"
+            keyboardType="email-address"
+            icon="email"
+          />
+          <AppFormPasswordField
+            label="Password"
+            name="password"
+            placeholder="1234566"
+            keyboardType="default"
+            icon="lock"
+          />
+          <AppSubmitButton title={"Login"} />
+        </AppForm>
+      </KeyboardAvoidingView>
+
+      {/* <TouchableOpacity
+          onPress={() => navigation.navigate(ROUTES_NAMES.SIGNUP)}
+        >
+          <Text>Signup</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate(ROUTES_NAMES.FORGET_PASSORD, { userId: 12 })
+          }
+        >
+          <Text>Forget Password</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(ROUTES_NAMES.TABS_NAVIGATOR)}
+        >
+          <Text>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(ROUTES_NAMES.DRAWER_NAVIGATOR)}
+        >
+          <Text>Drawer</Text>
+        </TouchableOpacity> */}
+    </AppSafeViewScreen>
   );
 };
 
@@ -86,9 +116,21 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Theme.WHITE_LIGHT,
     alignItems: "center",
     justifyContent: "center",
+  },
+  formContainer: {
+    width: "100%",
+  },
+  logoContainer: {
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 20,
+    marginTop: -50,
+  },
+  logoImage: {
+    width: 100,
+    height: 100,
   },
 });

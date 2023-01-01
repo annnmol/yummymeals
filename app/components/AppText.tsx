@@ -24,6 +24,13 @@ const AppText: React.FC<Props> = ({
       </Text>
     );
   }
+  if (variant === "body") {
+    return (
+      <Text style={[styles.text,{color:Theme.GREY_DARK}, style && style]} {...otherProps}>
+        {children}
+      </Text>
+    );
+  }
 
   return (
     <Text style={[styles.text, style && style]} {...otherProps}>
@@ -37,14 +44,19 @@ export default AppText;
 const styles = StyleSheet.create({
   text: {
     fontSize: 14,
-    fontFamily: Theme.FONT_MEDIUM,
+    color:Theme.TEXT
+  },
+  body: {
+    fontSize: 14,
+    color: Theme.GREY_DARK,
+    lineHeight: 22,
+    
   },
 
   label: {
     fontSize: 14,
     letterSpacing: 1,
     color: Theme.GREY_DARK,
-    fontFamily: Theme.FONT_MEDIUM,
     marginBottom: 4,
   },
 });

@@ -1,6 +1,13 @@
 import { useFormikContext } from "formik";
-import React, { useEffect } from "react";
-import { KeyboardTypeOptions, StyleSheet, TextInput, View } from "react-native";
+import React, { memo, useEffect, useState } from "react";
+import {
+  KeyboardTypeOptions,
+  Pressable,
+  StyleSheet,
+  TextInput,
+  TouchableHighlight,
+  View,
+} from "react-native";
 
 import { Theme } from "../../customization/Theme";
 import AppIcon from "../AppIcon";
@@ -18,18 +25,21 @@ interface Props {
   [otherProps: string]: any;
 }
 
-const AppFormField: React.FC<Props> = ({
+const AppFormPasswordField: React.FC<Props> = ({
   label,
   name,
+
   divStyle,
-  icon,
+  icon = "lock",
   sendValuesToParent,
   keyboardType = "default",
   children,
   ...otherProps
 }) => {
-  const { setFieldTouched, errors, touched, setFieldValue, values } =
+  const { setFieldTouched, errors, touched, setFieldValue, values,  } =
     useFormikContext<any>();
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState<Boolean>(false);
 
   useEffect(() => {
     if (sendValuesToParent) {
@@ -41,18 +51,10 @@ const AppFormField: React.FC<Props> = ({
     <View style={styles.styledView}>
       <AppText variant="label">{label}</AppText>
       <View style={styles.inputContainer}>
-        {icon && (
-          <AppIcon
-            name={icon}
-            style={styles.icon}
-            size={20}
-            color={
-              !errors[name] && values[name] ? Theme.SUCCESS : Theme.GREY_DARK
-            }
-          />
-        )}
+        {icon && <AppIcon name={icon} style={styles.icon} size={20} color={ !errors[name] && values[name] ?  Theme.SUCCESS: Theme.GREY_DARK}/>}
         <TextInput
           {...otherProps}
+          secureTextEntry={isPasswordVisible ? false : true}
           onChangeText={(e: any) => setFieldValue(name, e)}
           value={values[name]}
           keyboardType={keyboardType}
@@ -63,15 +65,16 @@ const AppFormField: React.FC<Props> = ({
           style={[
             styles.styledInput,
             {
-              borderColor:
-                !errors[name] && values[name]
-                  ? Theme.SUCCESS
-                  : errors[name] && touched[name]
-                  ? Theme.ERROR
-                  : Theme.BORDER,
+              borderColor: !errors[name] && values[name] ?  Theme.SUCCESS: 
+                errors[name] && touched[name] ? Theme.ERROR : Theme.BORDER,
             },
           ]}
         />
+        <View style={styles.endIcon}>
+          <Pressable onPress={() => setIsPasswordVisible(!isPasswordVisible)}>
+            <AppIcon name={isPasswordVisible ? "eye-off" : "eye"} size={21} color={ !errors[name] && values[name] ?  Theme.SUCCESS : Theme.GREY_DARK}/>
+          </Pressable>
+        </View>
       </View>
 
       <AppErrorMessage error={errors[name]} visible={touched[name]} />
@@ -79,7 +82,7 @@ const AppFormField: React.FC<Props> = ({
   );
 };
 
-export default AppFormField;
+export default AppFormPasswordField;
 
 const styles = StyleSheet.create({
   styledView: {
@@ -100,13 +103,18 @@ const styles = StyleSheet.create({
     zIndex: 1,
     left: 10,
   },
+  endIcon: {
+    position: "absolute",
+    zIndex: 1,
+    right: 10,
+  },
 
   styledInput: {
     width: "100%",
     height: 48,
     backgroundColor: Theme.SECONDARY,
     paddingLeft: 40,
-    paddingRight: 16,
+    paddingRight: 40,
     fontSize: 16,
     fontWeight: "400",
     lineHeight: 24,

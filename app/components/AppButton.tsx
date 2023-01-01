@@ -10,9 +10,9 @@ import React from "react";
 import { Theme } from "../customization/Theme";
 
 interface Props {
-  style?: StyleProp<any>;
   textStyle?: StyleProp<any>;
   variant?: string;
+  style?: StyleProp<any>;
   children?: React.ReactNode;
   [otherProps: string]: any;
 }
@@ -26,34 +26,98 @@ const AppButton: React.FC<Props> = ({
 }) => {
   if( variant === 'TouchableHighlight')
   return (
-    <TouchableHighlight style={[styles.primaryButton, style && style]} {...otherProps}>
+    <TouchableHighlight activeOpacity={0.7} style={[styles.primaryButton, style && style]} {...otherProps}>
       <Text style={[styles.primarytext, textStyle && textStyle]}>{children}</Text>
     </TouchableHighlight>
   );
+
+  if( variant === 'outline')
   return (
-    <TouchableOpacity style={[styles.primaryButton, style && style]} {...otherProps}>
+    <TouchableHighlight underlayColor={Theme.PRIMARY} activeOpacity={0.7} style={[styles.outlineButton, style && style]} {...otherProps}>
+    <Text style={[styles.outlineText, textStyle && textStyle]}>{children}</Text>
+  </TouchableHighlight>
+  );
+
+  if( variant === 'outlineRound')
+  return (
+    <TouchableOpacity activeOpacity={0.7} style={[styles.outlineButton, {borderRadius:40},style && style]} {...otherProps}>
+    <Text style={[styles.outlineText, textStyle && textStyle]}>{children}</Text>
+  </TouchableOpacity>
+  );
+
+  if( variant === 'round')
+  return (
+    <TouchableOpacity activeOpacity={0.7} style={[styles.primaryButton,{borderRadius:40}, style && style]} {...otherProps}>
+    <Text style={[styles.primarytext, textStyle && textStyle]}>{children}</Text>
+  </TouchableOpacity>
+  );
+
+  if( variant === 'text')
+  return (
+    <TouchableOpacity activeOpacity={0.7} style={[styles.textButton, style && style]} {...otherProps}>
+    <Text style={[styles.outlineText, textStyle && textStyle]}>{children}</Text>
+  </TouchableOpacity>
+  );
+
+  return (
+    <TouchableOpacity activeOpacity={0.7} style={[styles.primaryButton, style && style]} {...otherProps}>
       <Text style={[styles.primarytext, textStyle && textStyle]}>{children}</Text>
     </TouchableOpacity>
   );
+
 };
 
 export default AppButton;
 
 const styles = StyleSheet.create({
+
+  //* primary btn
   primarytext: {
-    fontSize: 14,
-    fontFamily: Theme.FONT_MEDIUM,
     color: Theme.WHITE,
-    
+    fontSize: 16,
+    letterSpacing: 1,
+    fontWeight:'500',
   },
 
   primaryButton: {
     backgroundColor: Theme.PRIMARY,
-    width: 340,
+    width: '100%',
     height: 48,
-    borderRadius: 8,
+    borderRadius: 6,
     justifyContent: "center",
     alignItems: "center",
     marginVertical:4,
   },
+
+  //*outline
+  outlineButton: {
+    backgroundColor: Theme.TRANSPARENT,
+    width: '100%',
+    height: 48,
+    borderRadius: 6,
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 4,
+    borderColor: Theme.PRIMARY,
+    borderStyle: 'solid',
+    borderWidth: 1,
+  },
+
+  outlineText: {
+    color: Theme.PRIMARY,
+    fontSize: 16,
+    letterSpacing: 1,
+    fontWeight:'500',
+  },
+
+  textButton: {
+    backgroundColor: Theme.TRANSPARENT,
+    width: '100%',
+    height: 48,
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 4,
+    borderRadius: 6,
+  },
+ 
 });

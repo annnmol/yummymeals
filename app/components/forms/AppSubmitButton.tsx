@@ -29,6 +29,7 @@ const AppSubmitButton: React.FC<Props> = ({ title, ...otherProps }) => {
       // loadingPosition="center"
       disabled={isSubmitting}
       {...otherProps}
+      activeOpacity={0.6}
     >
       {isSubmitting ? (
         <ActivityIndicator
@@ -48,7 +49,7 @@ export default AppSubmitButton;
 const styles = StyleSheet.create({
   styledButton: {
     backgroundColor: Theme.PRIMARY,
-    width: 340,
+    width: '100%',
     height: 48,
     borderRadius: 8,
     justifyContent: 'center',
@@ -61,6 +62,5 @@ const styles = StyleSheet.create({
     color:Theme.WHITE,
     letterSpacing:2,
     textTransform: 'capitalize',
-    fontFamily:Theme.FONT_MEDIUM,
   }
 })

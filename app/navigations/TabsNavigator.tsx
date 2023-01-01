@@ -1,6 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Account from "../screens/Account/Account";
-import HomeScreen from "../screens/Home/HomeScreen";
+import AccountScreen from "../screens/Account/AccountScreen";
+import AddItemScreen from "../screens/AddListings/AddItemScreen";
+import MessageList from "../screens/Messages/MessagesList";
+
 import Orders from "../screens/Orders/Orders";
 import Search from "../screens/Search/Search";
 
@@ -19,13 +21,15 @@ const TabsNavigator = () => {
         headerStyle: {
           backgroundColor: "green",
         },
+        headerShown: false,
       }}
       initialRouteName={ROUTES_NAMES.HOMESCREEN_NAVIGATOR}
     >
       <Tab.Screen name={ROUTES_NAMES.HOMESCREEN_NAVIGATOR} component={HomeScreenNavigator} />
-      <Tab.Screen name={ROUTES_NAMES.SEARCH} component={Search} />
-      <Tab.Screen name={ROUTES_NAMES.ORDERS} component={Orders} />
-      <Tab.Screen name={ROUTES_NAMES.ACCOUNT} component={Account} />
+      {/* <Tab.Screen name={ROUTES_NAMES.SEARCH} component={Search} /> */}
+      <Tab.Screen name={ROUTES_NAMES.ADD_ITEM} component={AddItemScreen} />
+      <Tab.Screen name={ROUTES_NAMES.MESSAGE} component={MessageList} />
+      <Tab.Screen name={ROUTES_NAMES.ACCOUNT} component={AccountScreen} />
     </Tab.Navigator>
   );
 };

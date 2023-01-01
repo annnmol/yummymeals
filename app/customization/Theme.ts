@@ -1,5 +1,5 @@
 export class Theme {
-    public static PRIMARY = "#5B73E8"
+    public static PRIMARY = "#FF9801"
     public static SECONDARY = "#F5F6F8"
     public static BLACK = "#101010"
     public static WHITE_LIGHT = "#f1f1f1"
@@ -16,12 +16,14 @@ export class Theme {
     public static SUCCESS = "#27B783"
     public static ICON_LIGHT = "rgba(255, 255, 255, 0.4)"
     public static SHADOW = '0px 4px 8px rgba(0, 0, 0, 0.04)'
+    public static PADDING_HORIZONTAL_SCREEN = 14
+    public static BORDER_RADIUS = 6
 
 
     //typography
-    public static FONT_LIGHT = 'Poppins-Light'
-    public static FONT_REGULAR = 'Poppins-Regular'
-    public static FONT_MEDIUM = 'Poppins-Medium'
-    public static FONT_BOLD = 'Poppins-SemiBold'
+    // public static FONT_LIGHT = 'Poppins-Light'
+    // public static FONT_REGULAR = 'Poppins-Regular'
+    // public static FONT_MEDIUM = 'Poppins-Medium'
+    // public static FONT_BOLD = 'Poppins-SemiBold'
     
 }

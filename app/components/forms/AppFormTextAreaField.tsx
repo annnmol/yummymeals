@@ -1,7 +1,6 @@
 import { useFormikContext } from "formik";
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { KeyboardTypeOptions, StyleSheet, TextInput, View } from "react-native";
-
 import { Theme } from "../../customization/Theme";
 import AppIcon from "../AppIcon";
 import AppText from "../AppText";
@@ -18,7 +17,7 @@ interface Props {
   [otherProps: string]: any;
 }
 
-const AppFormField: React.FC<Props> = ({
+const AppFormTextAreaField: React.FC<Props> = ({
   label,
   name,
   divStyle,
@@ -53,6 +52,8 @@ const AppFormField: React.FC<Props> = ({
         )}
         <TextInput
           {...otherProps}
+          multiline
+          numberOfLines={4}
           onChangeText={(e: any) => setFieldValue(name, e)}
           value={values[name]}
           keyboardType={keyboardType}
@@ -79,7 +80,7 @@ const AppFormField: React.FC<Props> = ({
   );
 };
 
-export default AppFormField;
+export default AppFormTextAreaField;
 
 const styles = StyleSheet.create({
   styledView: {
@@ -99,11 +100,12 @@ const styles = StyleSheet.create({
     position: "absolute",
     zIndex: 1,
     left: 10,
+    // top: 15,
   },
 
   styledInput: {
     width: "100%",
-    height: 48,
+    minHeight: 48,
     backgroundColor: Theme.SECONDARY,
     paddingLeft: 40,
     paddingRight: 16,

@@ -1,8 +1,11 @@
 import { createStackNavigator } from '@react-navigation/stack';
+import { AppViewImage } from '../components';
 import ForgetPassword from '../screens/Auth/ForgetPassword';
 import Login from '../screens/Auth/Login';
 import Signup from '../screens/Auth/Signup';
 import VerifyMobile from '../screens/Auth/VerifyMobile';
+
+import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
 import {ROUTES_NAMES } from '../utils/defaults';
 import DrawerNavigator from './DrawerNavigator';
 import TabsNavigator from './TabsNavigator';
@@ -18,8 +21,12 @@ const AuthNavigator = () => {
       headerStyle: {
         backgroundColor: 'green',     
       },
-      headerBackTitleStyle:false,
-    }} initialRouteName={ROUTES_NAMES.LOGIN}>
+      headerBackTitleStyle: false,
+      headerShown: false,
+    }} initialRouteName={ROUTES_NAMES.WELCOME}>
+      <Stack.Screen name={ROUTES_NAMES.VIEW_IMAGE} component={AppViewImage} options={{ presentation:'modal' }}/>
+      
+    <Stack.Screen name={ROUTES_NAMES.WELCOME} component={WelcomeScreen} />
     <Stack.Screen name={ROUTES_NAMES.LOGIN} component={Login} />
     <Stack.Screen name={ROUTES_NAMES.SIGNUP} component={Signup}  options={{ title: 'Overview' }}/>
     <Stack.Screen name={ROUTES_NAMES.VERIFY_MOBILE} component={VerifyMobile} options={{headerShown:false}}/>

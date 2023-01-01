@@ -14,7 +14,8 @@ const HomeScreenNavigator = () => {
       headerStyle: {
         backgroundColor: 'green',     
       },
-      headerBackTitleStyle:false,
+      headerBackTitleStyle: false,
+      headerShown: false,
     }} initialRouteName={ROUTES_NAMES.HOMESCREEN}>
     <Stack.Screen name={ROUTES_NAMES.HOMESCREEN} component={HomeScreen} />
     <Stack.Screen name={ROUTES_NAMES.NEWSCARD} component={NewsCard}  options={{ title: 'Overview', presentation:'modal' }}/>

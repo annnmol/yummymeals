@@ -12,6 +12,9 @@ export class STATUS_CODES {
 
 export class ROUTES_NAMES {
   public static AUTH_NAVIGATOR = "AuthNavigator";
+  //welcome
+  public static WELCOME = "Welcome";
+
   public static LOGIN = "Login";
   public static SIGNUP = "Singup";
   public static FORGET_PASSORD = "ForgetPassword";
@@ -24,11 +27,17 @@ export class ROUTES_NAMES {
   public static NEWSCARD = "NewsCard";
 
   public static ACCOUNT = "Account";
+  public static MESSAGE = "Message";
   public static SEARCH = "Search";
+  public static ADD_ITEM = "AddItem";
   public static ORDERS = "Orders";
 
   public static DRAWER_NAVIGATOR = "DrawerNavigator";
   public static SETTINGS = "Settings";  
+  
+  //common
+  public static VIEW_IMAGE = "ViewImage";  
+
 
 }
 

@@ -8,6 +8,8 @@ import Animated, {
   useAnimatedStyle,
   Easing,
 } from 'react-native-reanimated';
+import { AppSafeViewScreen } from '../../components';
+import TopItemListings from './TopItemsListings';
 
 
 const HomeScreen = () => {
@@ -26,7 +28,9 @@ const HomeScreen = () => {
     };
   });
   return (
-    <View>
+    <AppSafeViewScreen style={styles.container}>
+      <TopItemListings/>
+    {/* <View>
       <Text>HomeScreen</Text>
       <TouchableOpacity
         onPress={() => navigation.navigate(ROUTES_NAMES.NEWSCARD)}
@@ -51,10 +55,16 @@ const HomeScreen = () => {
         }}
       />
     </View>
-    </View>
+      </View>
+       */}
+    </AppSafeViewScreen>
   )
 }
 
 export default HomeScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    
+  }
+})

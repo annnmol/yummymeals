@@ -1,8 +1,9 @@
 import { useFormikContext } from "formik";
 import React, { useEffect } from "react";
 import { KeyboardTypeOptions, StyleSheet, TextInput, View } from "react-native";
+import { Theme } from "../../utils";
 
-import { Theme } from "../../customization/Theme";
+
 import AppIcon from "../AppIcon";
 import AppText from "../AppText";
 import AppErrorMessage from "./AppErrorMessage";
@@ -68,7 +69,7 @@ const AppFormField: React.FC<Props> = ({
                   ? Theme.SUCCESS
                   : errors[name] && touched[name]
                   ? Theme.ERROR
-                  : Theme.BORDER,
+                  : Theme.BORDER_COLOR,
             },
           ]}
         />

@@ -1,7 +1,8 @@
 import Constants from "expo-constants";
 import React from "react";
 import { SafeAreaView, StyleProp, StyleSheet } from "react-native";
-import { Theme } from "../customization/Theme";
+import { Theme } from "../utils";
+
 
 
 interface Props {

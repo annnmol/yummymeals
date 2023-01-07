@@ -8,8 +8,9 @@ import {
   View,
 } from "react-native";
 import { AppButton, AppText } from "../../components";
-import { Theme } from "../../customization/Theme";
-import { ROUTES_NAMES } from "../../utils/defaults";
+import { ROUTES_NAMES } from "../../navigations/Routes";
+import { Theme } from "../../utils";
+
 
 interface Props {
   style?: StyleProp<any>;
@@ -26,6 +27,7 @@ const WelcomeScreen: React.FC<Props> = ({ style, children, ...otherProps }) => {
     <ImageBackground
       style={[styles.background]}
       source={require("../../assets/images/egg.jpeg")}
+      blurRadius={1}
     >
       <View style={[styles.logoContainer]}>
         <Image
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   LogoCaption: {
     fontSize: 22,
     letterSpacing: 1,
-    fontWeight: "500",
+    fontWeight: 'bold',
     color: Theme.TEXT,
   },
 });

@@ -3,9 +3,10 @@ import React from "react";
 import { AppIcon, AppItemSeparator, AppSafeViewScreen } from "../../components";
 import ListAvatarItem from "../../components/cards/ListAvatarItem";
 import { FlashList } from "@shopify/flash-list";
-import { Theme } from "../../customization/Theme";
-import { ROUTES_NAMES } from "../../utils/defaults";
+
 import { useNavigation } from "@react-navigation/native";
+import { ROUTES_NAMES } from "../../navigations/Routes";
+import { Theme } from "../../utils";
 
 interface Props {
   children?: React.ReactNode;
@@ -48,7 +49,8 @@ const AccountScreen: React.FC<Props> = ({ children, ...otherProps }) => {
       <ListAvatarItem
         title={"Shanaya"}
         description={"shanayasharama@gmail.com"}
-        image={require("../../assets/images/user1.jpg")}
+          image={require("../../assets/images/user1.jpg")}
+          // onPress={()=>handleNavigation(ROUTES_NAMES.SETTINGS)}
       />
       </View>
       <View style={[styles.optionContainer]}>

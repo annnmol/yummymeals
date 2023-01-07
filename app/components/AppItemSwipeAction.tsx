@@ -8,7 +8,8 @@ import {
 } from "react-native";
 import React from "react";
 import AppIcon from "./AppIcon";
-import { Theme } from "../customization/Theme";
+import { Theme } from "../utils";
+
 
 interface Props {
   onPress: (event: GestureResponderEvent) => void;

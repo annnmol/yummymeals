@@ -4,8 +4,9 @@ import {
   StyleProp,
   StyleSheet, TouchableOpacity
 } from "react-native";
+import { Theme } from "../utils";
 
-import { Theme } from "../customization/Theme";
+
 import AppText from "./AppText";
 
 interface Props {

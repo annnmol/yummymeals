@@ -1,7 +1,8 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { StyleProp, StyleSheet, View } from "react-native";
-import { Theme } from "../customization/Theme";
+import { Theme } from "../utils";
+
 
 interface Props {
   name: any | string;

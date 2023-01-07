@@ -1,7 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
+import CardDetails from '../components/cards/CardDetails';
 import HomeScreen from '../screens/Home/HomeScreen';
-import NewsCard from '../screens/NewsCard/NewsCard';
-import { ROUTES_NAMES } from '../utils/defaults';
+import { ROUTES_NAMES } from './Routes';
+
 
 const Stack = createStackNavigator();
 
@@ -16,9 +17,9 @@ const HomeScreenNavigator = () => {
       },
       headerBackTitleStyle: false,
       headerShown: false,
-    }} initialRouteName={ROUTES_NAMES.HOMESCREEN}>
-    <Stack.Screen name={ROUTES_NAMES.HOMESCREEN} component={HomeScreen} />
-    <Stack.Screen name={ROUTES_NAMES.NEWSCARD} component={NewsCard}  options={{ title: 'Overview', presentation:'modal' }}/>
+    }} initialRouteName={ROUTES_NAMES.HOMESCREEN} >
+      <Stack.Screen name={ROUTES_NAMES.HOMESCREEN} component={HomeScreen}/>
+    <Stack.Screen name={ROUTES_NAMES.CARD_DETAILS} component={CardDetails}  options={{ title: 'Overview', presentation:'modal' }}/>
   </Stack.Navigator>
   )
 }

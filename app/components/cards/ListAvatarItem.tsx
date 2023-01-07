@@ -9,7 +9,8 @@ import {
   View,
 } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
-import { Theme } from "../../customization/Theme";
+import { Theme } from "../../utils";
+
 import AppText from "../AppText";
 
 interface Props {
@@ -78,38 +79,38 @@ const styles = StyleSheet.create({
   card: {
     width: "100%",
     maxHeight: 80,
+    overflow: "hidden",
     flexDirection: "row",
     alignContent: "center",
     justifyContent: "flex-start",
     backgroundColor: Theme.WHITE,
-    overflow: "hidden",
     paddingHorizontal: Theme.PADDING_HORIZONTAL_SCREEN,
-    paddingVertical: Theme.PADDING_HORIZONTAL_SCREEN - 8,
+    paddingVertical: Theme.PADDING_HORIZONTAL_SCREEN - 4,
+    paddingRight:30,
   },
   cardImage: {
-    width: 64,
-    height: 64,
+    width: 54,
+    height: 54,
     borderRadius: 32,
   },
   cardInfoBox: {
     marginHorizontal: Theme.PADDING_HORIZONTAL_SCREEN - 4,
-    paddingVertical: 8,
     justifyContent: "center",
+    width:'85%',
     height: "100%",
     overflow: "hidden",
+    // backgroundColor: Theme.SUCCESS,
   },
   title: {
     fontSize: 16,
     fontWeight: "500",
-    marginBottom: 6,
+    marginBottom: 4,
     letterSpacing: 1,
     overflow: "hidden",
-    width: "100%",
   },
   description: {
     fontSize: 14,
     overflow: "hidden",
-    width: "100%",
     color: Theme.GREY_DARK,
   },
 });

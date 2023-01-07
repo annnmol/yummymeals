@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Theme } from "../customization/Theme";
+import { Theme } from "../utils";
+
 import AppIcon from "./AppIcon";
 import AppText from "./AppText";
 

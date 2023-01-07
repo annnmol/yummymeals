@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Featured from '../Featured/Featured'
-import { Theme } from '../../customization/Theme'
+import { Theme } from '../../utils'
 
 const NewsCard = () => {
   return (

@@ -8,7 +8,8 @@ import {
   AppFormPasswordField,
   AppFormSelectField, AppSubmitButton
 } from "../../components/forms";
-import { loginSchema } from "../../utils/Validation";
+import { loginSchema } from "../../utils/ValidationSchema";
+
 
 
 const Login = () => {

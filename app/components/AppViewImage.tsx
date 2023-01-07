@@ -7,10 +7,10 @@ import {
 } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
-import { Theme } from "../customization/Theme";
-import { ROUTES_NAMES } from "../utils/defaults";
+
 import AppIcon from "./AppIcon";
 import AppSafeViewScreen from "./AppSafeViewScreen";
+import { Theme } from "../utils";
 
 interface Props {
   style?: StyleProp<any>;
@@ -25,7 +25,7 @@ const AppViewImage: React.FC<Props> = ({ style, children, ...otherProps }) => {
       <View style={[styles.imageButtonContainer]}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate(ROUTES_NAMES.WELCOME);
+            navigation.navigate(-1);
             console.log("tapped");
           }}
         >

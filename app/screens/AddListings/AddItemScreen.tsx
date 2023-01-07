@@ -1,24 +1,29 @@
 import {
+  Button,
   KeyboardAvoidingView,
   StyleProp,
   StyleSheet,
   Text,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppSafeViewScreen } from "../../components";
 import { useNavigation } from "@react-navigation/native";
 import {
   AppForm,
   AppFormField,
+  AppFormImagePicker,
   AppFormPasswordField,
   AppFormSelectField,
   AppFormTextAreaField,
   AppSubmitButton,
 } from "../../components/forms";
-import { addItemSchema } from "../../utils/Validation";
-import { Theme } from "../../customization/Theme";
+
 import AppPickerCategoryItem from "../../components/AppPickerCategoryItem";
+import * as EXPO_LOCATION from "expo-location";
+import useLocation from "../../hooks/useLocation";
+import { addItemSchema } from "../../utils/ValidationSchema";
+import { Theme } from "../../utils";
 
 let Options = [
   {
@@ -87,14 +92,17 @@ const Filename: React.FC<Props> = ({ style, children, ...otherProps }) => {
   const navigation = useNavigation<any>();
 
   const [userInput, setUserInput] = useState<any>({
+    image: [],
     title: "",
     price: "",
     category: 0,
     description: "",
   });
 
+  
+
   const handleSubmitBtn = (values: any, SubmitProps: any) => {
-    console.log("values are", values, SubmitProps);
+    console.log("values are", values);
     SubmitProps.setSubmitting(true);
 
     setTimeout(() => {
@@ -106,6 +114,7 @@ const Filename: React.FC<Props> = ({ style, children, ...otherProps }) => {
 
   return (
     <AppSafeViewScreen style={styles.container}>
+      {/* <Button onPress={()=>getLoc()} title="aaaa"/> */}
       <KeyboardAvoidingView style={styles.formContainer}>
         <AppForm
           initialValues={userInput}
@@ -114,6 +123,13 @@ const Filename: React.FC<Props> = ({ style, children, ...otherProps }) => {
           }}
           validationSchema={addItemSchema}
         >
+          <AppFormImagePicker
+            label="Image"
+            name="image"
+            placeholder="Adidas Shoes"
+            keyboardType="phone-pad"
+            icon="view-headline"
+          />
           <AppFormField
             label="Title"
             name="title"
@@ -156,10 +172,12 @@ export default Filename;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
   },
   formContainer: {
     width: "100%",
+    flex: 1,
   },
 });

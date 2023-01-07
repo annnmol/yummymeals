@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
-export const ONLY_CHARACTER_REGEX =
-  /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð 0-9]+$/u;
+// export const ONLY_CHARACTER_REGEX =
+//   /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð 0-9]+$/u;
 
 export const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -16,12 +16,18 @@ export const loginSchema = Yup.object().shape({
 });
 
 export const addItemSchema = Yup.object().shape({
+  image: Yup.array()
+    .required("image is reqired")
+    .min(1,'minimum 1 image required')
+    .max(3,'max 3 images allowed')
+  .label('Image')
+  ,
   title: Yup.string()
     .min(2, "Title must be at least 2 characters")
     .max(60, "Title can be maximum 60 characters")
     .required("Title is required")
     .label("Title"),
-  price: Yup.number()
+  price: Yup.number('only numbers are allowed')
     .min(0)
     .max(100000)
     .required("Price is required")

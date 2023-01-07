@@ -1,9 +1,8 @@
 import { useFormikContext } from "formik";
 import React from "react";
 import { ActivityIndicator, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Theme } from "../../customization/Theme";
-// import { useNotification } from "../../Hooks/useNotification/useNotification";
-// import AppButton from "../AppButton";
+import { Theme } from "../../utils";
+
 
 interface Props {
   title: string;

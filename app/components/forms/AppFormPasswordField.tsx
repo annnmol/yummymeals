@@ -8,8 +8,9 @@ import {
   TouchableHighlight,
   View,
 } from "react-native";
+import { Theme } from "../../utils";
 
-import { Theme } from "../../customization/Theme";
+
 import AppIcon from "../AppIcon";
 import AppText from "../AppText";
 import AppErrorMessage from "./AppErrorMessage";
@@ -66,7 +67,7 @@ const AppFormPasswordField: React.FC<Props> = ({
             styles.styledInput,
             {
               borderColor: !errors[name] && values[name] ?  Theme.SUCCESS: 
-                errors[name] && touched[name] ? Theme.ERROR : Theme.BORDER,
+                errors[name] && touched[name] ? Theme.ERROR : Theme.BORDER_COLOR,
             },
           ]}
         />

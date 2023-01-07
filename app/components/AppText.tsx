@@ -1,6 +1,7 @@
 import { StyleProp, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Theme } from "../customization/Theme";
+import { Theme } from "../utils";
+
 
 interface Props {
   style?: any;

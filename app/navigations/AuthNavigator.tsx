@@ -6,8 +6,8 @@ import Signup from '../screens/Auth/Signup';
 import VerifyMobile from '../screens/Auth/VerifyMobile';
 
 import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
-import {ROUTES_NAMES } from '../utils/defaults';
 import DrawerNavigator from './DrawerNavigator';
+import { ROUTES_NAMES } from './Routes';
 import TabsNavigator from './TabsNavigator';
 
 const Stack = createStackNavigator();

@@ -10,8 +10,8 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { Theme } from "../../utils";
 
-import { Theme } from "../../customization/Theme";
 import AppIcon from "../AppIcon";
 import AppItemSeparator from "../AppItemSeparator";
 import AppPickerListItem from "../AppPickerListItem";
@@ -73,7 +73,7 @@ const AppFormSelectField: React.FC<Props> = ({
                     ? Theme.SUCCESS
                     : errors[name] && touched[name]
                     ? Theme.ERROR
-                    : Theme.BORDER,
+                    : Theme.BORDER_COLOR,
               },
             ]}
           >

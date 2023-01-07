@@ -25,6 +25,7 @@ export class ROUTES_NAMES {
   public static HOMESCREEN_NAVIGATOR = "HomeNavigator";
   public static HOMESCREEN = "HomeScreen";
   public static NEWSCARD = "NewsCard";
+  public static CARD_DETAILS = "CardDetails";
 
   public static ACCOUNT = "Account";
   public static MESSAGE = "Message";

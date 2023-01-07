@@ -1,36 +1,43 @@
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { useNavigation } from '@react-navigation/native'
-import { ROUTES_NAMES } from '../../utils/defaults'
-import Animated, {
-  useSharedValue,
-  withTiming,
-  useAnimatedStyle,
-  Easing,
-} from 'react-native-reanimated';
-import { AppSafeViewScreen } from '../../components';
-import TopItemListings from './TopItemsListings';
+import { useNavigation } from "@react-navigation/native";
+import React, { useEffect } from "react";
+import { StyleSheet } from "react-native";
 
+import { AppOfflineAlert, AppSafeViewScreen } from "../../components";
+import TopItemListings from "./TopItemsListings";
 
 const HomeScreen = () => {
-  const navigation = useNavigation<any>()
+  const navigation = useNavigation<any>();
+  
+  // const dispatch = useAppDispatch();
+  // const {name} = useAppSelector(useNameStore)
 
-  const randomWidth = useSharedValue(10);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     dispatch(ChangeNameSlice({name:'anmol singh tanwar'}))
+  //   }, 2000);
+  //  console.log("name ftorm store", name)
+  // }, [name])
+ 
 
-  const config = {
-    duration: 500,
-    easing: Easing.bezier(0.5, 0.01, 0, 1),
-  };
+  // get();
+  useEffect(() => {
+    // setAsyncValue('@storage_Key','anmol')
+    // const result =getAsyncValue('@storage_Key')
+    // console.log("result", result)
+    // setAsyncData("kkkk", {id:1, name:'anmol'});
+    // getAsyncData("kkkk");
+  
+    // console.log("dddddd",getAsyncData("kkkk"))
+    // clearAll();
+  }, []);
 
-  const style = useAnimatedStyle(() => {
-    return {
-      width: withTiming(randomWidth.value, config),
-    };
-  });
+ 
   return (
     <AppSafeViewScreen style={styles.container}>
-      <TopItemListings/>
-    {/* <View>
+      <AppOfflineAlert />
+      <TopItemListings />
+
+      {/* <View>
       <Text>HomeScreen</Text>
       <TouchableOpacity
         onPress={() => navigation.navigate(ROUTES_NAMES.NEWSCARD)}
@@ -58,13 +65,11 @@ const HomeScreen = () => {
       </View>
        */}
     </AppSafeViewScreen>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    
-  }
-})
+  container: {},
+});

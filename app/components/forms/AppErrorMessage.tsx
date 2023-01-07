@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
-import { Theme } from "../../customization/Theme";
+import { Theme } from "../../utils";
+
 
 interface Props {
   error?: any;

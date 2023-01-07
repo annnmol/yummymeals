@@ -7,7 +7,8 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { Theme } from "../customization/Theme";
+import { Theme } from "../utils";
+
 
 interface Props {
   textStyle?: StyleProp<any>;

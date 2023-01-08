@@ -18,6 +18,13 @@ const useAppStorage = () => {
       console.log("AsyncStorage reading Data store error", error);
     }
   };
+  const removeAsyncData = async (keyName: string) => {
+    try {
+      await AsyncStorage.removeItem(keyName);
+    } catch (error: any) {
+      console.log("AsyncStorage reading Data store error", error);
+    }
+  };
 
   const clearAll = async () => {
     try {
@@ -30,7 +37,7 @@ const useAppStorage = () => {
     console.log("Done.");
   };
 
-  return { clearAll, getAsyncData, setAsyncData };
+  return { clearAll, getAsyncData, setAsyncData, removeAsyncData };
 };
 
 export default useAppStorage;

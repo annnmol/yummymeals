@@ -1,36 +1,36 @@
-
 import { AxiosInstance, AxiosRequestConfig } from "axios";
-import useCacheStorage from "../hooks/useCacheStorage";
+import { useCacheStorage } from "../utils";
+
 import { formatString } from "../utils/Helpers";
 
 export interface HTTPFnParams {
   url: string;
   method?: string;
-  params?: { [key: string]: any; };
-  data?: { [key: string]: any; };
-  headers?: { [key: string]: string; };
+  params?: { [key: string]: any };
+  data?: { [key: string]: any };
+  headers?: { [key: string]: string };
   pathParams?: Array<any>;
-  formData?: FormData,
-  cacheData?:boolean
+  formData?: FormData;
+  cacheData?: boolean;
 }
 
 const getHttpService = (axios: AxiosInstance) => {
-  const { getCacheData, setCacheData } = useCacheStorage()
-  
+  const { getCacheData, setCacheData } = useCacheStorage();
+
   const get = async (params: HTTPFnParams) => {
     let url = params.url;
     if (params?.pathParams) {
-      url = formatString(params.url, params.pathParams)
+      url = formatString(params.url, params.pathParams);
     }
     const config: AxiosRequestConfig = {
       url: url,
-      method: params.method ? params.method : 'get'
+      method: params.method ? params.method : "get",
     };
     if (params?.params) {
       config.params = params.params;
     }
     if (params?.headers) {
-      config.headers = params?.headers
+      config.headers = params?.headers;
     }
 
     return await axios
@@ -38,41 +38,40 @@ const getHttpService = (axios: AxiosInstance) => {
       .then((response) => {
         // console.log("get response", response?.data)
         if (params?.cacheData) {
-          setCacheData(url, response?.data)
+          setCacheData(url, response?.data);
         }
         return Promise.resolve(response);
       })
       .catch((error: any) => {
-
         if (params?.cacheData) {
           const res = getCacheData(url);
-          console.log("returning cache data")
+          console.log("returning cache data");
           let temp = {
             ...res,
             error,
             cacheData: true,
-          }
+          };
           return Promise.resolve(temp);
         }
 
         return Promise.reject(error);
       });
   };
-  
+
   const post = async (params: HTTPFnParams) => {
     let url = params.url;
     if (params?.pathParams) {
-      url = formatString(params.url, params.pathParams)
+      url = formatString(params.url, params.pathParams);
     }
     const config: AxiosRequestConfig = {
       url: url,
-      method: params.method ? params.method : 'post'
+      method: params.method ? params.method : "post",
     };
     if (params?.params) {
       config.params = params.params;
     }
     if (params?.headers) {
-      config.headers = params?.headers
+      config.headers = params?.headers;
     }
     if (params?.data) {
       config.data = params?.data;
@@ -86,15 +85,15 @@ const getHttpService = (axios: AxiosInstance) => {
         return Promise.reject(error);
       });
   };
-  
+
   const patch = async (params: HTTPFnParams) => {
     let url = params.url;
     if (params?.pathParams) {
-      url = formatString(params.url, params.pathParams)
+      url = formatString(params.url, params.pathParams);
     }
     const config: AxiosRequestConfig = {
       url: url,
-      method: params.method ? params.method : 'patch'
+      method: params.method ? params.method : "patch",
     };
     if (params?.params) {
       config.params = params?.params;
@@ -103,7 +102,7 @@ const getHttpService = (axios: AxiosInstance) => {
       config.data = params?.data;
     }
     if (params?.headers) {
-      config.headers = params?.headers
+      config.headers = params?.headers;
     }
     return await axios
       .request(config)
@@ -114,15 +113,15 @@ const getHttpService = (axios: AxiosInstance) => {
         return Promise.reject(error);
       });
   };
-  
+
   const put = async (params: HTTPFnParams) => {
     let url = params.url;
     if (params?.pathParams) {
-      url = formatString(params.url, params.pathParams)
+      url = formatString(params.url, params.pathParams);
     }
     const config: AxiosRequestConfig = {
       url: url,
-      method: params.method ? params.method : 'put'
+      method: params.method ? params.method : "put",
     };
     if (params?.params) {
       config.params = params?.params;
@@ -131,7 +130,7 @@ const getHttpService = (axios: AxiosInstance) => {
       config.data = params?.data;
     }
     if (params?.headers) {
-      config.headers = params?.headers
+      config.headers = params?.headers;
     }
     return await axios
       .request(config)
@@ -146,17 +145,17 @@ const getHttpService = (axios: AxiosInstance) => {
   const upload = async (params: HTTPFnParams) => {
     let url = params.url;
     if (params?.pathParams) {
-      url = formatString(params.url, params.pathParams)
+      url = formatString(params.url, params.pathParams);
     }
     const config: AxiosRequestConfig = {
       url: url,
-      method: params.method ? params.method : 'post'
+      method: params.method ? params.method : "post",
     };
     if (params?.params) {
       config.params = params.params;
     }
     if (params?.headers) {
-      config.headers = params?.headers
+      config.headers = params?.headers;
     }
     if (params?.data) {
       config.data = params?.data;
@@ -173,15 +172,15 @@ const getHttpService = (axios: AxiosInstance) => {
         return Promise.reject(error);
       });
   };
-  
+
   const httpDelete = async (params: HTTPFnParams) => {
-    let url:any = params.url;
+    let url: any = params.url;
     if (params?.pathParams) {
-      url = formatString(params.url, params.pathParams)
+      url = formatString(params.url, params.pathParams);
     }
     const config: AxiosRequestConfig = {
       url: url,
-      method: params.method ? params.method : 'delete'
+      method: params.method ? params.method : "delete",
     };
     if (params?.params) {
       config.params = params?.params;
@@ -190,7 +189,7 @@ const getHttpService = (axios: AxiosInstance) => {
       config.data = params?.data;
     }
     if (params?.headers) {
-      config.headers = params?.headers
+      config.headers = params?.headers;
     }
     return axios
       .request(config)
@@ -201,10 +200,8 @@ const getHttpService = (axios: AxiosInstance) => {
         return Promise.reject(error);
       });
   };
-  
-  return {get, post, put, patch, httpDelete, upload}
-}
 
-
+  return { get, post, put, patch, httpDelete, upload };
+};
 
 export { getHttpService };

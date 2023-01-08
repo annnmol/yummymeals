@@ -22,8 +22,9 @@ import {
 import AppPickerCategoryItem from "../../components/AppPickerCategoryItem";
 import * as EXPO_LOCATION from "expo-location";
 import useLocation from "../../hooks/useLocation";
-import { addItemSchema } from "../../utils/ValidationSchema";
+
 import { Theme } from "../../utils";
+import { addItemSchema } from "../../utils/ValidationSchema";
 
 let Options = [
   {
@@ -88,7 +89,7 @@ interface Props {
   [otherProps: string]: any;
 }
 
-const Filename: React.FC<Props> = ({ style, children, ...otherProps }) => {
+const AddItemScreen: React.FC<Props> = ({ style, children, ...otherProps }) => {
   const navigation = useNavigation<any>();
 
   const [userInput, setUserInput] = useState<any>({
@@ -168,7 +169,7 @@ const Filename: React.FC<Props> = ({ style, children, ...otherProps }) => {
   );
 };
 
-export default Filename;
+export default AddItemScreen;
 
 const styles = StyleSheet.create({
   container: {

@@ -12,6 +12,7 @@ import { loginSchema } from "../../utils/ValidationSchema";
 
 
 
+
 const Login = () => {
   const navigation = useNavigation<any>();
 
@@ -27,34 +28,12 @@ const Login = () => {
     setTimeout(() => {
       SubmitProps.setSubmitting(false);
 
-      SubmitProps.resetForm();
+      // SubmitProps.resetForm();
     }, 4000);
   };
 
   return (
     <AppSafeViewScreen style={styles.container}>
-      {/* <TopItemListings/> */}
-      {/* <AccountScreen/> */}
-      {/* <MessageList/> */}
-      {/* <SimpleCardDetails
-        title="Food Burger"
-        price="$6.90"
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, alias. Delectus, dicta veniam quae architecto expedita, repellendus cum, dignissimos recusandae doloremque aliquam odio voluptatum distinctio? Obcaecati ipsa officia quibusdam magni."
-        image={require("../../assets/images/juice.jpeg")}
-      /> */}
-
-      {/* <SimpleCard
-          title="Food Buger"
-          price="$6.90"
-          description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, alias. Delectus, dicta veniam quae architecto expedita, repellendus cum, dignissimos recusandae doloremque aliquam odio voluptatum distinctio? Obcaecati ipsa officia quibusdam magni.'
-          image={require('../../assets/images/egg.jpeg')}
-        />
-        <SimpleCard
-          title="Food Buger"
-          price="$6.90"
-          description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, alias. Delectus, dicta veniam quae architecto expedita, repellendus cum, dignissimos recusandae doloremque aliquam odio voluptatum distinctio? Obcaecati ipsa officia quibusdam magni.'
-          image={require('../../assets/images/egg.jpeg')}
-        /> */}
       <View style={styles.logoContainer}>
         <Image
           style={[styles.logoImage]}
@@ -86,29 +65,6 @@ const Login = () => {
           <AppSubmitButton title={"Login"} />
         </AppForm>
       </KeyboardAvoidingView>
-
-      {/* <TouchableOpacity
-          onPress={() => navigation.navigate(ROUTES_NAMES.SIGNUP)}
-        >
-          <Text>Signup</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate(ROUTES_NAMES.FORGET_PASSORD, { userId: 12 })
-          }
-        >
-          <Text>Forget Password</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate(ROUTES_NAMES.TABS_NAVIGATOR)}
-        >
-          <Text>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate(ROUTES_NAMES.DRAWER_NAVIGATOR)}
-        >
-          <Text>Drawer</Text>
-        </TouchableOpacity> */}
     </AppSafeViewScreen>
   );
 };
@@ -117,6 +73,7 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {
+    flex:1,
     alignItems: "center",
     justifyContent: "center",
   },

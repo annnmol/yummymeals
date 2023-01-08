@@ -40,7 +40,7 @@ const WelcomeScreen: React.FC<Props> = ({ style, children, ...otherProps }) => {
         <AppButton variant="round"  style={{marginBottom:12}} onPress={() => navigation.navigate(ROUTES_NAMES.LOGIN)}>
           Login
         </AppButton>
-        <AppButton variant="round" onPress={() => navigation.navigate(ROUTES_NAMES.TABS_NAVIGATOR)}>
+        <AppButton variant="round" onPress={() => navigation.navigate(ROUTES_NAMES.SIGNUP)}>
           Register
         </AppButton>
       </View>

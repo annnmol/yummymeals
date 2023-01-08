@@ -34,7 +34,6 @@ const HomeScreen = () => {
  
   return (
     <AppSafeViewScreen style={styles.container}>
-      <AppOfflineAlert />
       <TopItemListings />
 
       {/* <View>

@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
-// export const ONLY_CHARACTER_REGEX =
-//   /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð 0-9]+$/u;
+ const ONLY_CHARACTER_REGEX =
+  /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð 0-9]+$/u;
 
 export const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -9,10 +9,30 @@ export const loginSchema = Yup.object().shape({
     .required("Email is required")
     .label("Email"),
   password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .max(24, "Password can be maximum 24 characters")
+    .min(6)
+    .max(24)
     .required("Password is required")
     .label("Password"),
+});
+export const RegisterSchema = Yup.object().shape({
+  fullName: Yup.string()
+  .min(3)
+  .max(24)
+  .matches(ONLY_CHARACTER_REGEX, "Enter a valid name")
+  .required("Full Name is required")
+  .label("Full Name"),
+  email: Yup.string()
+    .email("Enter a valid Email")
+    .required("Email is required")
+    .label("Email"),
+  password: Yup.string()
+    .min(6)
+    .max(24)
+    .required("Password is required")
+    .label("Password"),
+    confirmPassword: Yup.string()
+    .required("Password is required")
+    .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
 export const addItemSchema = Yup.object().shape({
@@ -53,3 +73,5 @@ export const addItemSchema = Yup.object().shape({
     .required("Description is required")
     .label("Description"),
 });
+
+export default {RegisterSchema, loginSchema, addItemSchema}

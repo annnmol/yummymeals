@@ -18,6 +18,7 @@ const getHttpService = (axios: AxiosInstance) => {
   const { getCacheData, setCacheData } = useCacheStorage();
 
   const get = async (params: HTTPFnParams) => {
+    // console.log("inside get call")
     let url = params.url;
     if (params?.pathParams) {
       url = formatString(params.url, params.pathParams);
@@ -25,6 +26,9 @@ const getHttpService = (axios: AxiosInstance) => {
     const config: AxiosRequestConfig = {
       url: url,
       method: params.method ? params.method : "get",
+      // onDownloadProgress(progressEvent) {
+      //   console.log("progress", progressEvent)
+      // },
     };
     if (params?.params) {
       config.params = params.params;

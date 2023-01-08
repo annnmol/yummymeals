@@ -34,13 +34,11 @@ export const AppActivityLoader = (
         {isLoading && (
           <AppSafeViewScreen style={styles.container}>
             <View style={styles.loaderContainer}>
-
-            <ActivityIndicator size="large" color={Theme.PRIMARY} />
+              <ActivityIndicator size="small" color={Theme.PRIMARY} />
             </View>
           </AppSafeViewScreen>
-        ) }
-          <WrappedComponent {...props} setLoading={setLoadingState} />
-
+        )}
+        <WrappedComponent {...props} setLoading={setLoadingState} />
       </>
     );
   }
@@ -49,25 +47,26 @@ export const AppActivityLoader = (
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    zIndex: 10,
+    position: "absolute",
+    zIndex: 2,
     flex: 1,
-    top:0,
-    right:0,
-    left:0,
-    bottom:0,
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor:Theme.TRANSPARENT,
+    backgroundColor: Theme.WHITE,
+    opacity: 0.8,
   },
 
   loaderContainer: {
     width: 40,
     height: 40,
-    borderRadius:24,
+    borderRadius: 24,
     backgroundColor: Theme.WHITE,
     justifyContent: "center",
     alignItems: "center",
-    elevation:1,
-  }
+    elevation: 0.5,
+  },
 });

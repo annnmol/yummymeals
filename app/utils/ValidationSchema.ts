@@ -19,8 +19,8 @@ export const RegisterSchema = Yup.object().shape({
   .min(3)
   .max(24)
   .matches(ONLY_CHARACTER_REGEX, "Enter a valid name")
-  .required("Full Name is required")
-  .label("Full Name"),
+  .required("Name is required")
+  .label("Name"),
   email: Yup.string()
     .email("Enter a valid Email")
     .required("Email is required")

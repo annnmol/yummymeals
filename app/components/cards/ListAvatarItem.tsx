@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   GestureResponderEvent,
   Image,
@@ -9,6 +9,9 @@ import {
   View,
 } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
+import Animated from "react-native-reanimated";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
 import { Theme } from "../../utils";
 
 import AppText from "../AppText";
@@ -36,40 +39,52 @@ const ListAvatarItem: React.FC<Props> = ({
   children,
   ...otherProps
 }) => {
+  const swipeableRef = useRef<any>(null);
+
+  const closeSwipeable = () => {
+    swipeableRef?.current?.close();
+  };
   return (
-    <Swipeable renderRightActions={RenderRightActions}>
-      <TouchableHighlight underlayColor={Theme.GREY} onPress={onPress}>
-        <View style={[styles.card, style && style]}>
-          {IconAvatarComponent && IconAvatarComponent}
-          {image && (
-            <Image
-              style={[styles.cardImage]}
-              source={image}
-              resizeMode="cover"
-            />
-          )}
-          <View style={styles.cardInfoBox}>
-            <AppText
-              style={styles.title}
-              numberOfLines={1}
-              ellipsizeMode="tail"
-            >
-              {title}
-            </AppText>
-            {description && (
+    <GestureHandlerRootView>
+      <Swipeable
+        renderRightActions={RenderRightActions}
+        ref={swipeableRef}
+        rightThreshold={40}
+        // onSwipeableLeftOpen={() => closeSwipeable()}
+      >
+        <TouchableHighlight underlayColor={Theme.GREY} onPress={onPress}>
+          <Animated.View style={[styles.card, style && style]}>
+            {IconAvatarComponent && IconAvatarComponent}
+            {image && (
+              <Image
+                style={[styles.cardImage]}
+                source={image}
+                resizeMode="cover"
+              />
+            )}
+            <View style={styles.cardInfoBox}>
               <AppText
-                variant="body"
-                style={styles.description}
+                style={styles.title}
                 numberOfLines={1}
                 ellipsizeMode="tail"
               >
-                {description}
+                {title}
               </AppText>
-            )}
-          </View>
-        </View>
-      </TouchableHighlight>
-    </Swipeable>
+              {description && (
+                <AppText
+                  variant="body"
+                  style={styles.description}
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                >
+                  {description}
+                </AppText>
+              )}
+            </View>
+          </Animated.View>
+        </TouchableHighlight>
+      </Swipeable>
+    </GestureHandlerRootView>
   );
 };
 
@@ -86,7 +101,7 @@ const styles = StyleSheet.create({
     backgroundColor: Theme.WHITE,
     paddingHorizontal: Theme.PADDING_HORIZONTAL_SCREEN,
     paddingVertical: Theme.PADDING_HORIZONTAL_SCREEN - 4,
-    paddingRight:30,
+    paddingRight: 30,
   },
   cardImage: {
     width: 54,
@@ -96,7 +111,7 @@ const styles = StyleSheet.create({
   cardInfoBox: {
     marginHorizontal: Theme.PADDING_HORIZONTAL_SCREEN - 4,
     justifyContent: "center",
-    width:'85%',
+    width: "85%",
     height: "100%",
     overflow: "hidden",
     // backgroundColor: Theme.SUCCESS,

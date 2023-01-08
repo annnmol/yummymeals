@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from 'react-native';
 
 import { AppIcon } from "../components";
+
 import AccountScreen from "../screens/Account/AccountScreen";
 import AddItemScreen from "../screens/AddListings/AddItemScreen";
 import MessageList from "../screens/Messages/MessagesList";
@@ -17,6 +18,7 @@ import TabbarCtaButton from "./TabbarCtaButton";
 const Tab = createBottomTabNavigator();
 
 const TabsNavigator = () => {
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -41,6 +43,7 @@ const TabsNavigator = () => {
         component={HomeScreenNavigator}
         options={{
           tabBarIcon: ({ focused, size, color }) => <AppIcon name={focused ? 'home' : "home-outline"} size={size} color={color} />,
+          tabBarLabel:'Home'
         }}
       />
       <Tab.Screen name={ROUTES_NAMES.SEARCH} component={Search}  options={{

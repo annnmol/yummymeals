@@ -2,10 +2,16 @@ import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 import type { TypedUseSelectorHook } from 'react-redux'
 import NameReducer from './Slices/NameSlice';
+import AuthUserReducer from './Slices/AuthUserSlice';
 export const store = configureStore({
   reducer: {
     currentName:NameReducer,
+    currentAuthUser:AuthUserReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: false,
+  }),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

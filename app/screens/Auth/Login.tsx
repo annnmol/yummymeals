@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { UserCredential } from "firebase/auth";
 import React, { useState } from "react";
 import { Image, KeyboardAvoidingView, StyleSheet, View } from "react-native";
 import { AppSafeViewScreen } from "../../components";
@@ -8,12 +9,14 @@ import {
   AppFormPasswordField,
   AppFormSelectField, AppSubmitButton
 } from "../../components/forms";
+import useAuthService from "../../services/authServices/useAuthService";
 import { loginSchema } from "../../utils/ValidationSchema";
 
 
 
 
 const Login = () => {
+  const {logOut,logIn, register} = useAuthService();
   const navigation = useNavigation<any>();
 
   const [userInput, setUserInput] = useState<any>({
@@ -21,15 +24,18 @@ const Login = () => {
     password: "",
   });
 
-  const handleSubmitBtn = (values: any, SubmitProps: any) => {
-    console.log("values are", values, SubmitProps);
+  const handleSubmitBtn = async (values: any, SubmitProps: any) => {
+    // console.log("values are", values, SubmitProps);
     SubmitProps.setSubmitting(true);
 
-    setTimeout(() => {
+    await logIn(values?.email, values?.password).then((response:UserCredential) => {
+      // console.log("response", response)
+    }).catch((error: any) => {
+      console.log("error", error?.message)
+    }).finally(() => {
       SubmitProps.setSubmitting(false);
+    })
 
-      // SubmitProps.resetForm();
-    }, 4000);
   };
 
   return (

@@ -29,12 +29,12 @@ export default AppOfflineAlert;
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    zIndex: 111,
+    zIndex: 2,
     height: 32,
-    width: "120%",
+    width: "100%",
     top: Constants.statusBarHeight,
     left: 0,
-    right:0,
+    right: 0,
     justifyContent: "center",
     alignContent: "center",
     backgroundColor: Theme.ERROR,
@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: Theme.WHITE,
     fontWeight: "500",
-    letterSpacing:1,
+    letterSpacing: 1,
   },
 });

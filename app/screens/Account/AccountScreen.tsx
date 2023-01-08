@@ -1,11 +1,12 @@
-import { StyleProp, StyleSheet, Text, View } from "react-native";
+import { FlashList } from "@shopify/flash-list";
 import React from "react";
+import { StyleSheet, View } from "react-native";
 import { AppIcon, AppItemSeparator, AppSafeViewScreen } from "../../components";
 import ListAvatarItem from "../../components/cards/ListAvatarItem";
-import { FlashList } from "@shopify/flash-list";
 
 import { useNavigation } from "@react-navigation/native";
 import { ROUTES_NAMES } from "../../navigations/Routes";
+import useAuthService from "../../services/authServices/useAuthService";
 import { Theme } from "../../utils";
 
 interface Props {
@@ -37,6 +38,7 @@ let data = [
 ]
 
 const AccountScreen: React.FC<Props> = ({ children, ...otherProps }) => {
+  const {logOut,user} = useAuthService();
   const navigation = useNavigation<any>();
 
   const handleNavigation = (url:string) => {
@@ -47,8 +49,8 @@ const AccountScreen: React.FC<Props> = ({ children, ...otherProps }) => {
     <AppSafeViewScreen style={styles.container}>
       <View style={[styles.headerContainer]}>
       <ListAvatarItem
-        title={"Shanaya"}
-        description={"shanayasharama@gmail.com"}
+        title={user?.displayName || 'Kuch Bhi'}
+        description={user?.email || ''}
           image={require("../../assets/images/user1.jpg")}
           // onPress={()=>handleNavigation(ROUTES_NAMES.SETTINGS)}
       />
@@ -80,7 +82,8 @@ const AccountScreen: React.FC<Props> = ({ children, ...otherProps }) => {
       </View>
       <ListAvatarItem
         title={"Logout"}
-        onPress={() => handleNavigation(ROUTES_NAMES.WELCOME)}
+        // onPress={() => handleNavigation(ROUTES_NAMES.WELCOME)}
+        onPress={() => logOut()}
         IconAvatarComponent={
           <AppIcon
             variant="avatar"

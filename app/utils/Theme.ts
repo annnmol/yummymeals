@@ -1,3 +1,5 @@
+import Constants from "expo-constants";
+
 export class Theme {
   public static PRIMARY = "#FF9801";
   public static SECONDARY = "#F5F6F8";
@@ -10,7 +12,8 @@ export class Theme {
   public static GREY_LIGHT = "#F5F6F8";
   public static GREY_DARK = "#7E8392";
   public static Blue = "dodgerblue";
-  public static ERROR = "#F34E4E";
+  public static ERROR = "#E0144C";
+  public static ERROR_LIGHT = "#FF7D7D";
   public static SUCCESS = "#27B783";
   public static ICON_LIGHT = "rgba(255, 255, 255, 0.4)";
   public static SHADOW = "0px 4px 8px rgba(0, 0, 0, 0.04)";
@@ -20,11 +23,11 @@ export class Theme {
   public static TRANSPARENT_BLACK1 = "rgba(0, 0, 0, 0.1)";
   public static TRANSPARENT_BLACK7 = "rgba(0, 0, 0, 0.7)";
 
-
   public static BORDER_STYLE = "solid";
   public static BORDER_RADIUS = 6;
   public static BORDER_WIDTH = 1;
   public static BORDER_COLOR = "#CBCDD3";
+
   //typography
   // public static FONT_LIGHT = 'Poppins-Light'
   // public static FONT_REGULAR = 'Poppins-Regular'

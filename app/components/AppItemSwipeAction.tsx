@@ -27,7 +27,7 @@ const AppItemSwipeAction: React.FC<Props> = ({
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
-        <AppIcon name="trash-can" size={35} color={Theme.WHITE} />
+        <AppIcon name="trash-can" size={32} color={Theme.WHITE} />
       </View>
     </TouchableWithoutFeedback>
   );
@@ -37,9 +37,16 @@ export default AppItemSwipeAction;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Theme.ERROR,
-    width: 70,
-    justifyContent: "center",
+    position:'absolute',
+    zIndex: -1,
+    right:0,
+    backgroundColor: Theme.ERROR_LIGHT,
+    color: Theme.WHITE_LIGHT,
+    width: '100%',
+    height: '100%',
+    flexDirection:'row',
+    justifyContent: "flex-end",
     alignItems: "center",
+    paddingRight:20,
   },
 });

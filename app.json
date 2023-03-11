@@ -4,10 +4,10 @@
     "slug": "yummymeals",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/images/logo.png",
+    "icon": "./app/assets/images/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./app/assets/images/splash.png",
+      "image": "./app/assets/images/splashDark.png",
       "resizeMode": "cover",
       "backgroundColor": "#e63c4b"
     },
@@ -22,12 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/images/icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./app/assets/images/icon.png"
     },
     "description": "a food delivery app"
   }

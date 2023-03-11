@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
+import ImageLogo from "../../assets/images/ImageLogo";
 
 import { AppOfflineAlert, AppSafeViewScreen } from "../../components";
 import TopItemListings from "./TopItemsListings";
@@ -34,6 +35,7 @@ const HomeScreen = () => {
  
   return (
     <AppSafeViewScreen style={styles.container}>
+      <ImageLogo/>
       <TopItemListings />
 
       {/* <View>

@@ -5,105 +5,9 @@ import { AppIcon, AppItemSeparator, AppSafeViewScreen } from "../../components";
 import { FlashList, ViewToken } from "@shopify/flash-list";
 import AppItemSwipeAction from "../../components/AppItemSwipeAction";
 import { useSharedValue } from "react-native-reanimated";
+import { initialMessageData } from "../../assets/dummyData/dummyData";
 
-let initialData: any = [
-  {
-    id: 1,
-    title: "Anmol",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 2,
-    title: "Farheen",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 3,
-    title: "Anmol",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 4,
-    title: "Divina",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 5,
-    title: "Hina",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 122,
-    title: "Anmol",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 21,
-    title: "Farheen",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 31,
-    title: "Anmol",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 41,
-    title: "Divina",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 15,
-    title: "Hina",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 54,
-    title: "Hina",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 1242,
-    title: "Anmol",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 215,
-    title: "Farheen",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 351,
-    title: "Anmol",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 451,
-    title: "Divina",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-  {
-    id: 155,
-    title: "Hina",
-    description: "16 bje parso milna",
-    image: require("../../assets/images/user1.jpg"),
-  },
-];
+
 
 interface Props {
   style?: StyleProp<any>;
@@ -112,13 +16,15 @@ interface Props {
 }
 
 const MessageList: React.FC<Props> = ({ style, children, ...otherProps }) => {
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState(initialMessageData);
   const [refreshing, setRefreshing] = useState(false);
 
   // const viewableItems = useSharedValue<ViewToken[]>([])
 
   const handleDelete = (item: any) => {
+    // 'worklet';
     // Delete the message from messages
+    console.log("Delete")
     setData(data.filter((m: any) => m.id !== item?.id));
   };
 
@@ -135,11 +41,12 @@ const MessageList: React.FC<Props> = ({ style, children, ...otherProps }) => {
         renderItem={({ item, index }) => {
           return (
             <ListAvatarItem
-            
+              item={item}
               title={item?.title}
               description={item?.description}
               image={item?.image}
               onPress={() => console.log("itemclicked", index)}
+              onDelete={handleDelete}
               RenderRightActions={() => (
                 <AppItemSwipeAction onPress={() => handleDelete(item)} />
               )}

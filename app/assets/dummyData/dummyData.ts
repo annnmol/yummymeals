@@ -1,0 +1,98 @@
+export const initialMessageData: any = [
+    {
+      id: 1,
+      title: "Anmol",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 2,
+      title: "Abc",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 3,
+      title: "Anmol",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 4,
+      title: "123",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 5,
+      title: "Xyz",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 122,
+      title: "Anmol",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 21,
+      title: "Abc",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 31,
+      title: "Anmol",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 41,
+      title: "123",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 15,
+      title: "Xyz",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 54,
+      title: "Xyz",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 1242,
+      title: "Anmol",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 215,
+      title: "Abc",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 351,
+      title: "Anmol",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 451,
+      title: "123",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+    {
+      id: 155,
+      title: "Xyz",
+      description: "16 bje parso milna",
+      image: require("../../assets/images/user1.jpg"),
+    },
+  ];
